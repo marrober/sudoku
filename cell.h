@@ -6,6 +6,7 @@ private:
     BINARY fixedValue;
     int gridGroup;
     int possibleValueIndex;
+    int trialValue;
 
 public: 
     cell(void);
@@ -18,4 +19,6 @@ public:
     int getNextPossibleValue();
     void removePossibleValue(int);
     int getCurrentPossibleValue(void);
+    void setTrialValue(int);
+    int getTrialValue(void);
 };

@@ -10,6 +10,7 @@ cell::cell(void) {
     numberRemainingPossibleValues = GRID_SIZE;
     fixedValue = FALSE;
     possibleValueIndex = 0;
+    trialValue = 0;
 }
 int cell::getNumRemainingValues(void) {
     return (numberRemainingPossibleValues);
@@ -51,7 +52,10 @@ void cell::removePossibleValue(int valueToRemove) {
             possibleValues[counter] = possibleValues[counter + skip];
         } 
         possibleValueIndex--; 
-        printf("removing value %d\n", valueToRemove);
+        if (possibleValueIndex >= numberRemainingPossibleValues) {
+           possibleValueIndex = (numberRemainingPossibleValues - 1);
+        }
+        // printf("removing value %d\n", valueToRemove);
     }
 }
 int cell::getNextPossibleValue() {
@@ -65,4 +69,11 @@ int cell::getNextPossibleValue() {
 int cell::getCurrentPossibleValue() {
     return(possibleValues[possibleValueIndex]);
 }
+void cell::setTrialValue(int trialValueToSet){
+    trialValue = trialValueToSet;
+}
+int cell::getTrialValue() {
+    return(trialValue);
+}
+
 
