@@ -23,8 +23,8 @@ int main(void) {
     cells[3][4].setValue(4);
     cells[4][2].setValue(5);
     cells[4][3].setValue(4);
-    cells[5][0].setValue(1);
-    cells[5][5].setValue(5);
+    // cells[5][0].setValue(1);
+    // cells[5][5].setValue(5);
 
     printf("values remaining to set ....\n");
     for (int rowCounter = 0; rowCounter < GRID_SIZE; rowCounter++) {
@@ -156,5 +156,22 @@ int main(void) {
             printf("\n");
         }
     }
+
+    int numberVariableCells = 0;
+    printf("Set initial trial cells ....\n");
+    for (int rowCounter = 0; rowCounter < GRID_SIZE; rowCounter++) {
+        for (int columnCounter = 0; columnCounter < GRID_SIZE; columnCounter++) {
+            if (!cells[rowCounter][columnCounter].isFixedValue()) {
+                cells[rowCounter][columnCounter].setTrialValue(cells[rowCounter][columnCounter].getNextPossibleValue());
+                numberVariableCells++;
+                printf("cells to iterate : ");
+                printf("%d %d %d %d\n", rowCounter, columnCounter, cells[rowCounter][columnCounter].getNumRemainingValues(), cells[rowCounter][columnCounter].getTrialValue());  
+            }
+        }
+        printf("\n");
+    }
+    printf("Number of variable cells : %d\n", numberVariableCells);
+
+
 
 }
