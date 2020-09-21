@@ -12,6 +12,7 @@ int main(void) {
 
     cell cells[GRID_SIZE][GRID_SIZE];
     cell *pCells = &cells[GRID_SIZE][GRID_SIZE];
+    cell trialCells[GRID_SIZE * GRID_SIZE];
 
     cells[0][0].setValue(4);
     cells[0][5].setValue(1);
@@ -148,9 +149,9 @@ int main(void) {
         for (int rowCounter = 0; rowCounter < GRID_SIZE; rowCounter++) {
             for (int columnCounter = 0; columnCounter < GRID_SIZE; columnCounter++) {
                 if (cells[rowCounter][columnCounter].isFixedValue()) {
-                    printf("*%d ", cells[rowCounter][columnCounter].getValue());
+                    printf("%d ", cells[rowCounter][columnCounter].getValue());
                 } else {
-                    printf("-%d ", cells[rowCounter][columnCounter].getTrialValue()); 
+                    printf("- "); 
                 }
             }
             printf("\n");
@@ -158,20 +159,69 @@ int main(void) {
     }
 
     int numberVariableCells = 0;
-    printf("Set initial trial cells ....\n");
+
     for (int rowCounter = 0; rowCounter < GRID_SIZE; rowCounter++) {
         for (int columnCounter = 0; columnCounter < GRID_SIZE; columnCounter++) {
             if (!cells[rowCounter][columnCounter].isFixedValue()) {
                 cells[rowCounter][columnCounter].setTrialValue(cells[rowCounter][columnCounter].getNextPossibleValue());
-                numberVariableCells++;
-                printf("cells to iterate : ");
-                printf("%d %d %d %d\n", rowCounter, columnCounter, cells[rowCounter][columnCounter].getNumRemainingValues(), cells[rowCounter][columnCounter].getTrialValue());  
+                trialCells[numberVariableCells++] = cells[rowCounter][columnCounter];
+
             }
         }
-        printf("\n");
     }
     printf("Number of variable cells : %d\n", numberVariableCells);
 
+    for (counter1 = 0; counter1 < trialCells[0];counter1++) {
+        for (counter2 = 0; counter2 < trialCells[1];counter2++) {
+            for (counter3 = 0; counter3 < trialCells[2];counter3++) {
+                for (counter4 = 0; counter4 < trialCells[3];counter4++) {
+                    
+    }
 
 
+
+
+
+
+/*
+        for (int rowCounter = 0; rowCounter < GRID_SIZE; rowCounter++) {
+            for (int columnCounter = 0; columnCounter < GRID_SIZE; columnCounter++) {
+                if (!cells[rowCounter][columnCounter].isFixedValue()) {
+
+                    printf("Trial cell : row %d col %d val %d ", rowCounter, columnCounter, cells[rowCounter][columnCounter].getTrialValue());
+
+                    // compare to fixed row values
+
+                    if (compareToFixedRowValues(rowCounter, columnCounter, cells, cells[rowCounter][columnCounter].getTrialValue())) {
+                        validCombination = FALSE;
+                    }
+
+                    // compare to fixed column values
+
+                    if(compareToFixedColumnValues(rowCounter, columnCounter, cells, cells[rowCounter][columnCounter].getTrialValue())) {
+                        validCombination = FALSE;
+                    }
+
+                    // compare to grid values
+
+                    if(compareToGridValues(rowCounter, columnCounter, cells, cells[rowCounter][columnCounter].getTrialValue())) {
+                        validCombination = FALSE;
+                    }
+                }
+            }
+        }
+
+
+
+
+                    
+                    for (int cellIterator = 0; cellIterator < cells[rowCounter][columnCounter].getNumRemainingValues(); cellIterator++) {
+                        printf(":: %d ", cells[rowCounter][columnCounter].getTrialValue());  
+                        cells[rowCounter][columnCounter].setTrialValue(cells[rowCounter][columnCounter].getNextPossibleValue());
+                    }
+                    printf("\n");
+                }
+            }
+        }*/
+    
 }
