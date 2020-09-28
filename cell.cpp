@@ -11,6 +11,7 @@ cell::cell(void) {
     fixedValue = FALSE;
     possibleValueIndex = 0;
     trialValue = 0;
+    ptrNextCell = nullptr;
 }
 int cell::getNumRemainingValues(void) {
     return (numberRemainingPossibleValues);
@@ -44,14 +45,14 @@ void cell::removePossibleValue(int valueToRemove) {
     }
 
     if(valueIsInListToBeRemoved) {
-        numberRemainingPossibleValues--; 
+        numberRemainingPossibleValues--;
         for (int counter = 0; counter < numberRemainingPossibleValues; counter++) {
             if (possibleValues[counter] == valueToRemove) {
                 skip = 1;
-            } 
+            }
             possibleValues[counter] = possibleValues[counter + skip];
-        } 
-        possibleValueIndex--; 
+        }
+        possibleValueIndex--;
         if (possibleValueIndex >= numberRemainingPossibleValues) {
            possibleValueIndex = (numberRemainingPossibleValues - 1);
         }
@@ -76,4 +77,9 @@ int cell::getTrialValue() {
     return(trialValue);
 }
 
-
+void cell::setNextCellPtr(cell *ptrCell) {
+    ptrNextCell = ptrCell;
+}
+cell& cell::getNextCellPtr() {
+    return(*ptrNextCell);
+}

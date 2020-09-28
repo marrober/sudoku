@@ -7,8 +7,9 @@ private:
     int gridGroup;
     int possibleValueIndex;
     int trialValue;
+    cell *ptrNextCell;
 
-public: 
+public:
     cell(void);
     int getNumRemainingValues(void);
     void setValue(int);
@@ -21,4 +22,6 @@ public:
     int getCurrentPossibleValue(void);
     void setTrialValue(int);
     int getTrialValue(void);
+    void setNextCellPtr(cell*);
+    cell& getNextCellPtr();
 };
