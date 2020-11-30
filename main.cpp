@@ -91,7 +91,8 @@ int main(void) {
             for (int columnCounter = 0; columnCounter < GRID_SIZE; columnCounter++) {
                 if (!cells[rowCounter][columnCounter].isFixedValue()) {
                     // printf("starting to guess for cell %d %d\n", rowCounter, columnCounter);
-                    while((possibleValue = cells[rowCounter][columnCounter].getNextPossibleValue()) > 0) {
+                    while((!cells[rowCounter][columnCounter].possibleValuesEnd())) {
+                        possibleValue = cells[rowCounter][columnCounter].getNextPossibleValue();
 
                         // compare to fixed row values
 

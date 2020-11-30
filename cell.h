@@ -18,6 +18,7 @@ public:
     int getGridGroup(void);
     BINARY isFixedValue(void);
     int getNextPossibleValue();
+    bool possibleValuesEnd();
     void removePossibleValue(int);
     int getCurrentPossibleValue(void);
     void setTrialValue(int);

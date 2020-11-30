@@ -64,7 +64,14 @@ int cell::getNextPossibleValue() {
         return(possibleValues[possibleValueIndex++]);
     } else{
         possibleValueIndex = 0;
-        return(0);
+        return(possibleValues[possibleValueIndex]);
+    }
+}
+bool cell::possibleValuesEnd() {
+    if (possibleValueIndex == numberRemainingPossibleValues) {
+        return(true);
+    } else {
+        return(false);  
     }
 }
 int cell::getCurrentPossibleValue() {
